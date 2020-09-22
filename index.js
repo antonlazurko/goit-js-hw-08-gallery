@@ -40,10 +40,10 @@ function onGalleryItemClick(event) {
   );
   window.addEventListener('keydown', pressNextPreviousKey);
   function pressNextPreviousKey(event) {
-    if (event.code === 'ArrowLeft') {
+    if (event.code === 'ArrowRight') {
       modalImg.src =
         ancestorEl.nextSibling.firstElementChild.firstElementChild.dataSource;
-    } else if (event.code === 'ArrowRight') {
+    } else if (event.code === 'ArrowLeft') {
       modalImg.src =
         ancestorEl.previousSibling.firstElementChild.firstElementChild.dataSource;
     }
