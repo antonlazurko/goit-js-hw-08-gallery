@@ -47,6 +47,8 @@ function onModalCloseBtnClick() {
   // окна, пока грузится изображение, мы не видели предыдущее.
   modalImg.src = '';
   modalImg.alt = '';
+  window.removeEventListener('keydown', onEscPress);
+  window.addEventListener('keydown', pressNextPreviousKey);
 }
 const overlay = document.querySelector('.lightbox__overlay');
 overlay.addEventListener('click', onOverlayClick);
@@ -55,10 +57,20 @@ function onOverlayClick(event) {
     onModalCloseBtnClick();
   }
 }
-
+//Закрытие модального окна по нажатию клавиши ESC.
 function onEscPress(event) {
   if (event.code === 'Escape') {
     onModalCloseBtnClick();
   }
-  window.removeEventListener('keydown', onEscPress);
+}
+// Пролистывание изображений галереи в открытом
+// модальном окне клавишами "влево" и "вправо".
+
+window.addEventListener('keydown', pressNextPreviousKey);
+function pressNextPreviousKey(event) {
+  if (event.code === 'ArrowLeft') {
+    console.log('left');
+  } else if (event.code === 'ArrowRight') {
+    console.log('right');
+  }
 }
