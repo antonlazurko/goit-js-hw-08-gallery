@@ -23,6 +23,7 @@ galleryListEl.addEventListener('click', onGalleryItemClick);
 const modalEl = document.querySelector('.js-lightbox');
 const modalImg = document.querySelector('.lightbox__image');
 function onGalleryItemClick(event) {
+  window.addEventListener('keydown', onEscPress);
   event.preventDefault();
   if (event.target.nodeName !== 'IMG') {
     return;
@@ -41,6 +42,23 @@ const modalCloseBtn = document.querySelector(
 modalCloseBtn.addEventListener('click', onModalCloseBtnClick);
 function onModalCloseBtnClick() {
   modalEl.classList.remove('is-open');
+  // Очистка значения атрибута src элемента img.lightbox__image.
+  // Это необходимо для того, чтобы при следующем открытии модального
+  // окна, пока грузится изображение, мы не видели предыдущее.
   modalImg.src = '';
   modalImg.alt = '';
+}
+const overlay = document.querySelector('.lightbox__overlay');
+overlay.addEventListener('click', onOverlayClick);
+function onOverlayClick(event) {
+  if (event.currentTarget === event.target) {
+    onModalCloseBtnClick();
+  }
+}
+
+function onEscPress(event) {
+  if (event.code === 'Escape') {
+    onModalCloseBtnClick();
+  }
+  window.removeEventListener('keydown', onEscPress);
 }
