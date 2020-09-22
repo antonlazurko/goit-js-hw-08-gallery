@@ -32,6 +32,22 @@ function onGalleryItemClick(event) {
   modalImg.src = event.target.dataSource;
   modalImg.alt = event.target.description;
   modalEl.classList.add('is-open');
+  const ancestorEl = event.target.parentNode.parentNode;
+  // Пролистывание изображений галереи в открытом
+  // модальном окне клавишами "влево" и "вправо".
+  console.log(
+    ancestorEl.nextSibling.lastElementChild.firstElementChild.dataSource,
+  );
+  window.addEventListener('keydown', pressNextPreviousKey);
+  function pressNextPreviousKey(event) {
+    if (event.code === 'ArrowLeft') {
+      modalImg.src =
+        ancestorEl.nextSibling.firstElementChild.firstElementChild.dataSource;
+    } else if (event.code === 'ArrowRight') {
+      modalImg.src =
+        ancestorEl.previousSibling.firstElementChild.firstElementChild.dataSource;
+    }
+  }
 }
 //Открытие модального окна по клику на элементе галереи.
 const modalCloseBtn = document.querySelector(
@@ -61,16 +77,5 @@ function onOverlayClick(event) {
 function onEscPress(event) {
   if (event.code === 'Escape') {
     onModalCloseBtnClick();
-  }
-}
-// Пролистывание изображений галереи в открытом
-// модальном окне клавишами "влево" и "вправо".
-
-window.addEventListener('keydown', pressNextPreviousKey);
-function pressNextPreviousKey(event) {
-  if (event.code === 'ArrowLeft') {
-    console.log('left');
-  } else if (event.code === 'ArrowRight') {
-    console.log('right');
   }
 }
