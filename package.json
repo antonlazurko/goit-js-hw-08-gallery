@@ -1,0 +1,21 @@
+{
+  "name": "goit-js-hw-08-gallery",
+  "version": "1.0.0",
+  "description": "homework8",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonlazurko/goit-js-hw-08-gallery.git"
+  },
+  "author": "anton <YOUR_EMAILnpm config set init.author.name YOUR_NAME\nnpm config set init.author.email YOUR_EMAIL>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonlazurko/goit-js-hw-08-gallery/issues"
+  },
+  "homepage": "https://github.com/antonlazurko/goit-js-hw-08-gallery#readme",
+  "dependencies": {}
+}
